@@ -1,7 +1,7 @@
 function Header(){
     return (
         <nav>
-            <a href="/">TASKS</a>
+            <a href="/"><h1> TASKS</h1></a>
         </nav>
     );
 }

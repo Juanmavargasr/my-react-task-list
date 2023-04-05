@@ -9,8 +9,8 @@ function Taskslist(props){
             {
                 list.map((tas) => (<Task taskname ={tas.taskname}/>))
             }
-
         </ul>
+
 
     );
 }
