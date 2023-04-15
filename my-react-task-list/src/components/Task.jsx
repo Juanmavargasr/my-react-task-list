@@ -18,7 +18,7 @@ function Task(props){
 
     return (
         <li>
-            <input type="checkbox" id={`task-${id}`} name={taskname}  value={taskname} onChange={handleClickCheckCompleted}>{isCompleted ? true : false}</input>
+            <input type="checkbox" id={`task-${id}`} name={taskname}  value={taskname} onChange={handleClickCheckCompleted}/>
             <label>{taskname}</label>
             <button onClick={handleClickDiscarded}>Discard task</button>
             <button onClick={handleClickPriorityTask}>{isPriority ? "Is priority" :"Set as Priority"}</button>
@@ -28,3 +28,4 @@ function Task(props){
 
 export default Task;
 //  checked={isCompleted} onChange={handleSetCompleteCheck}>{isCompleted ? "completed" : "un-completed"}
+// >{isCompleted ? true : false}
