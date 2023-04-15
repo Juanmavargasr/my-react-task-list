@@ -5,10 +5,9 @@ function Taskslist(props){
 
     const {list} = props;
     const [priority, setpriority] = useState([]);
+    const [Completed, setIsCompleted] = useState(false);
 
-    function handleCompleteTaskClick(taskname) {
-        console.log(`complete task clicked from ${taskname}`)
-    };
+
 
     function handleSetPriorityTask(taskname){
 
@@ -24,7 +23,13 @@ function Taskslist(props){
         setpriority(newpriority);
 
         localStorage.setItem("priority",JSON.stringify(newpriority));
+    };
+
+    
+    const handleSetCompletedCheck = () => {
+        setIsCompleted(!Completed);
     }
+
 
     useEffect (()=>{
         const localStorageData = localStorage.getItem('priority');
@@ -33,9 +38,6 @@ function Taskslist(props){
             const storedpriority = JSON.parse(localStorageData);
             setpriority(storedpriority);
         }
-        // const localStorageData = localStorage.getItem('priority');
-        // const storedpriority = JSON.parse(localStorageData); 
-        // setpriority(storedpriority);
     }, [])
 
     console.log({priority});
@@ -48,8 +50,7 @@ function Taskslist(props){
                 key = {tas.id}
                 id={tas.id}
                 taskname ={tas.taskname} 
-                completed = {tas.completed}
-                onCompleteTaskClick={handleCompleteTaskClick}
+                onSetIsCompleted = {handleSetCompletedCheck}
                 onSetPriorityTask = {handleSetPriorityTask}
                 isPriority={priority.includes(tas.taskname)}
                 />
