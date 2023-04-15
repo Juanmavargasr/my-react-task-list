@@ -6,8 +6,9 @@ import Header from "./components/Header";
 import Taskslist from "./components/Taskslist";
 
 const tasktonlist = [
-  {taskname: "Terminar proyecto my-react-task-list"},
-  {taskname: "Leer la documentación del próximo sprint"}
+  {id: 1, taskname: "Terminar proyecto my-react-task-list", completed: true},
+  {id: 2, taskname: "Leer la documentación del próximo sprint", completed: false},
+  {id: 3, taskname: "Tarea 3", completed: false}
 ]
 
 function App() {
