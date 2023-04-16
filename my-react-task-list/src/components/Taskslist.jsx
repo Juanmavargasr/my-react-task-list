@@ -5,7 +5,7 @@ function Taskslist(props){
 
     const {list} = props;
     const [priority, setpriority] = useState([]);
-    // const [completed, setIsCompleted] = useState(false);
+    const [completed, setIsCompleted] = useState(false);
 
 
 
@@ -18,18 +18,23 @@ function Taskslist(props){
         } else {
             newpriority = newpriority.filter(tas => taskname != tas);
         }
-
-
         setpriority(newpriority);
-
         localStorage.setItem("priority",JSON.stringify(newpriority));
     };
 
     
-    // const handleSetCompletedCheck = (taskname) => {
-    //     setIsCompleted(!completed);
-    //     console.log(completed)
-    // }
+    const handleSetCompletedCheck = (taskname) => {
+
+        let newcompleted = [...completed]
+
+        if(!e.target.checked === true){
+            newcompleted=[...newcompleted, taskname];
+        } else {
+            newcompleted = newcompleted.filter(tas => taskname != tas)
+        }
+        setIsCompleted(newcompleted);
+        localStorage.setItem("completed",JSON.stringify(newcompleted));
+    };
 
 
     useEffect (()=>{
@@ -42,16 +47,17 @@ function Taskslist(props){
     }, [])
 
 
-    // useEffect (()=>{
-    //     const localStorageData = localStorage.getItem('completed');
-    //     if (localStorageData=== null || localStorageData === undefined){
-    //     } else {
-    //         const storedcompleted = JSON.parse(localStorageData);
-    //         setIsCompleted(storedcompleted);
-    //     }
-    // }, [])
-    // console.log(completed)
+    useEffect (()=>{
+        const localStorageData = localStorage.getItem('completed');
+        if (localStorageData=== null || localStorageData === undefined){
+        } else {
+            const storedcompleted = JSON.parse(localStorageData);
+            setIsCompleted(storedcompleted);
+        }
+    }, [])
 
+
+    console.log({completed})
     // console.log({priority});
 
 
@@ -64,9 +70,10 @@ function Taskslist(props){
                 id={tas.id}
                 taskname ={tas.taskname}
                 completed = {tas.completed}
-                // onSetIsCompleted = {handleSetCompletedCheck}
+                onSetIsCompleted = {handleSetCompletedCheck}
                 onSetPriorityTask = {handleSetPriorityTask}
                 isPriority={priority.includes(tas.taskname)}
+
                 />
                 ))
             }

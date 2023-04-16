@@ -1,6 +1,8 @@
 function Task(props){
 
-    const {id, taskname, onSetPriorityTask, isPriority, onSetIsCompleted, isCompleted, completed} = props;
+    const {e, id, taskname, onSetPriorityTask, isPriority, onSetIsCompleted, isCompleted, completed} = props;
+
+
 
 
     function handleClickDiscarded() {
@@ -14,12 +16,16 @@ function Task(props){
     const handleClickCheckCompleted = (taskname, e) => {
         // onSetIsCompleted(taskname);
         console.log(e.target.checked)
-
     }
 
     return (
         <li>
-            <input type="checkbox" id={`task-${id}`} name={taskname}  value={taskname} ></input>
+            <input type="checkbox"
+            id={`task-${id}`} 
+            name={taskname}  
+            onChange={(e) => {handleClickCheckCompleted(taskname, e)}}>
+            </input>
+
             <label htmlFor={`task-${id}`} className={completed ? "completed":""}>{taskname}</label>
             <button onClick={handleClickDiscarded}>Discard task</button>
             <button onClick={handleClickPriorityTask}>{isPriority ? "Is priority" :"Set as Priority"}</button>
