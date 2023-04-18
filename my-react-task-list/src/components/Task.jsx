@@ -20,7 +20,6 @@ function Task(props){
     return (
         <li>
             <input type="checkbox"
-                id={`task-${id}`} 
                 name={taskname}  
                 onChange={(e) => {handleClickCheckCompleted(taskname, e)}}
             />

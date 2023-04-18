@@ -5,8 +5,6 @@ function Taskslist(props){
 
     const {list} = props;
     const [priority, setpriority] = useState([]);
-    const [completed, setIsCompleted] = useState([{},{},{}]);
-
 
 
     function handleSetPriorityTask(taskname){
@@ -22,13 +20,6 @@ function Taskslist(props){
         localStorage.setItem("priority",JSON.stringify(newpriority));
     };
 
-    
-    const handleSetCompletedCheck = (e, taskname) => {
-
-        let newcompleted = [...completed]
-        console.log({newcompleted})
-    };
-
 
     useEffect (()=>{
         const localStorageData = localStorage.getItem('priority');
@@ -38,20 +29,20 @@ function Taskslist(props){
             setpriority(storedpriority);
         }
     }, [])
+    console.log({priority})
 
 
     return (
         <ul>
             {
-                list.map((tas) => (
+                list.map((task) => (
                 <Task 
-                key = {tas.id}
-                id={tas.id}
-                taskname ={tas.taskname}
+                key = {task.id}
+                id={task.id}
+                taskname ={task.taskname}
                 input
-                onSetIsCompleted = {handleSetCompletedCheck}
                 onSetPriorityTask = {handleSetPriorityTask}
-                isPriority={priority.includes(tas.taskname)}
+                isPriority={priority.includes(task.taskname)}
 
                 />
                 ))
