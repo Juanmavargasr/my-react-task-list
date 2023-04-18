@@ -4,46 +4,52 @@ import Task from "./Task";
 function Taskslist(props){
 
     const {list} = props;
-    const [priority, setpriority] = useState([]);
+    console.log(list)
+    const [miLista, setMiLista] = useState(list)
+
+  useEffect(() => {
+    const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
+    if (cargaAuxiliar){
+        setMiLista(cargaAuxiliar)
+        console.log(cargaAuxiliar)
+    }
+  },[])  
 
 
-    function handleSetPriorityTask(taskname){
-
-        let newpriority = [...priority]
-
-         if(!priority.includes(taskname)){
-            newpriority= [...newpriority, taskname];
-        } else {
-            newpriority = newpriority.filter(tas => taskname != tas);
-        }
-        setpriority(newpriority);
-        localStorage.setItem("priority",JSON.stringify(newpriority));
-    };
+    const modificarElemento = (id) => {
+        const listaModificada = miLista.map((iteracion)=> {
+            if (iteracion.id === id) {
+                return {...iteracion, completed: !iteracion.completed}
+            } else {
+                return iteracion;
+            }
+        })
+        setMiLista(listaModificada);
+    }
 
 
-    useEffect (()=>{
-        const localStorageData = localStorage.getItem('priority');
-        if (localStorageData=== null || localStorageData === undefined){
-        } else {
-            const storedpriority = JSON.parse(localStorageData);
-            setpriority(storedpriority);
-        }
-    }, [])
-    console.log({priority})
+    const handleGuardarLocalStorage = () => {
+            const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
+            if (cargaAuxiliar) {
+                window.localStorage.removeItem("lista")
+                console.log(cargaAuxiliar)
+            }
+            window.localStorage.setItem("lista",JSON.stringify(miLista))
+
+    }
 
 
     return (
         <ul>
             {
-                list.map((task) => (
+                miLista.map((task) => (
                 <Task 
                 key = {task.id}
                 id={task.id}
                 taskname ={task.taskname}
-                input
-                onSetPriorityTask = {handleSetPriorityTask}
-                isPriority={priority.includes(task.taskname)}
-
+                completed = {task.completed}
+                onModificarElemento = {modificarElemento}
+                onGuardarLocalStorage = {handleGuardarLocalStorage}
                 />
                 ))
             }

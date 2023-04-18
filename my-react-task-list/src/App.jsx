@@ -2,16 +2,22 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 // import './App.css'
+import { useEffect } from "react";
 import Header from "./components/Header";
 import Taskslist from "./components/Taskslist";
 
-const tasktonlist = [
-  {id: 1, taskname: "Example task 1", completed: true},
+
+
+let tasktonlist = [
+  {id: 1, taskname: "Example task 1", completed: false},
   {id: 2, taskname: "Example task 2", completed: false},
   {id: 3, taskname: "Example task 3", completed: false}
 ]
 
 function App() {
+  
+
+
   return (
     <div className="App">
       <Header />
