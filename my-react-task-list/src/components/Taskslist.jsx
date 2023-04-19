@@ -13,6 +13,19 @@ function Taskslist(props){
     const [miLista, setMiLista] = useState(list)
 
 
+    const handleModificarElemento = (id) => {
+        const listaModificada = miLista.map((iteracion)=> {
+            if (iteracion.id === id) {
+                return {...iteracion,completed: !iteracion.completed}
+            } else {
+                return iteracion;
+            }
+        })
+        setMiLista(listaModificada);
+        localStorage.setItem("lista", JSON.stringify(listaModificada))
+    }
+
+
 
     useEffect(() => {
         const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
@@ -23,27 +36,6 @@ function Taskslist(props){
     },[])  
 
 
-    const handleModificarElemento = (id) => {
-        const listaModificada = miLista.map((iteracion)=> {
-            if (iteracion.id === id) {
-                return {...iteracion,completed: !iteracion.completed}
-            } else {
-                return iteracion;
-            }
-        })
-        setMiLista(listaModificada);
-    }
-
-
-    const handleGuardarLocalStorage = () => {
-            const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
-            if (cargaAuxiliar) {
-                window.localStorage.removeItem("lista")
-                console.log(cargaAuxiliar)
-            }
-            window.localStorage.setItem("lista",JSON.stringify(miLista))
-
-    }
 
 
     return (
@@ -57,7 +49,6 @@ function Taskslist(props){
                 description = {task.description}
                 completed = {task.completed}
                 onModificarElemento = {handleModificarElemento}
-                onGuardarLocalStorage = {handleGuardarLocalStorage}
                 />
                 ))
             }

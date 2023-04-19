@@ -13,7 +13,7 @@ function Task(props){
                 id = "markasdone"
                 name={taskname}  
                 onClick={() => {onModificarElemento(id)}}
-                onChange={() => {onGuardarLocalStorage()}}
+                onChange={() => {}}
                 checked = {completed}
             />
             <label><h3>{taskname}</h3></label>
