@@ -10,7 +10,10 @@ function Taskslist(props){
         {id: 3, taskname: "Example task 3", description: "task's 1 description",completed: false}
     ]
 
+
     const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
+
+
     const [miLista, setMiLista] = useState(cargaAuxiliar ? cargaAuxiliar : list)
 
 
@@ -25,8 +28,6 @@ function Taskslist(props){
                 return iteracion;
             }
         })
-
-        
         setMiLista(listaModificada);
         localStorage.setItem("lista", JSON.stringify(listaModificada))
     }
