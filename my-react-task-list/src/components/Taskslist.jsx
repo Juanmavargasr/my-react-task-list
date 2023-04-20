@@ -5,22 +5,28 @@ function Taskslist(props){
 
 
     let list = [
-        {id: 1, taskname: "Example task 1", description: "task's 1 description",completed: false},
+        {id: 1, taskname: "Example task 1", description: "task's 1 description",completed: true},
         {id: 2, taskname: "Example task 2", description: "task's 2 description",completed: false},
         {id: 3, taskname: "Example task 3", description: "task's 1 description",completed: false}
     ]
 
-    const [miLista, setMiLista] = useState(list)
+    const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
+    const [miLista, setMiLista] = useState(cargaAuxiliar ? cargaAuxiliar : list)
 
 
     const handleModificarElemento = (id) => {
         const listaModificada = miLista.map((iteracion)=> {
-            if (iteracion.id === id) {
+            if (miLista === null || miLista == undefined){
+                miLista = list
+                return miLista
+            } else if (iteracion.id === id) {
                 return {...iteracion,completed: !iteracion.completed}
             } else {
                 return iteracion;
             }
         })
+
+        
         setMiLista(listaModificada);
         localStorage.setItem("lista", JSON.stringify(listaModificada))
     }
@@ -28,14 +34,13 @@ function Taskslist(props){
 
 
     useEffect(() => {
+
         const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
         if (cargaAuxiliar){
             setMiLista(cargaAuxiliar)
             console.log(cargaAuxiliar)
         }
     },[])  
-
-
 
 
     return (
