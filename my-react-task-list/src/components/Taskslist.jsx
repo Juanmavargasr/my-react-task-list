@@ -32,7 +32,10 @@ function Taskslist(props){
     }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> final-proyect-tasklist
     return (
         <ul>
             {
