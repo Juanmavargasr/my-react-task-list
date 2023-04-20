@@ -5,6 +5,7 @@
 import { useEffect } from "react";
 import Header from "./components/Header";
 import Taskslist from "./components/Taskslist";
+// import Taskpending from "./components/Taskpending";
 import './index.css';
 
 
@@ -15,7 +16,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Taskslist/>
+      {/* <Taskslist/> */}
+
     </div>
   );
 }
