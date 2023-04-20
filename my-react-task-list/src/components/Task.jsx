@@ -1,6 +1,6 @@
 function Task(props){
 
-    const {id, taskname, description, completed, onModificarElemento, onGuardarLocalStorage} = props;
+    const {id, taskname, description, completed, onModificarElemento} = props;
 
 
     function handleClickDiscarded() {
@@ -10,7 +10,6 @@ function Task(props){
     return (
         <li>
             <input type="checkbox"
-                id = "markasdone"
                 name={taskname}  
                 onClick={() => {onModificarElemento(id)}}
                 onChange={() => {}}
