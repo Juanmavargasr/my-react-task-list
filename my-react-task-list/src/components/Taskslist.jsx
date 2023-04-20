@@ -18,10 +18,7 @@ function Taskslist(props){
 
     const handleModificarElemento = (id) => {
         const listaModificada = miLista.map((iteracion)=> {
-            if (miLista === null || miLista == undefined){
-                miLista = list
-                return miLista
-            } else if (iteracion.id === id) {
+            if (iteracion.id === id) {
                 return {...iteracion,completed: !iteracion.completed}
             } else {
                 return iteracion;
@@ -32,10 +29,6 @@ function Taskslist(props){
     }
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> final-proyect-tasklist
     return (
         <ul>
             {
