@@ -12,8 +12,10 @@ function Taskslist(props){
 
 
     const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
+    const cargaAuxiliarPendientes = JSON.parse(window.localStorage.getItem("listaPendientes"))
 
     const [miLista, setMiLista] = useState(cargaAuxiliar ? cargaAuxiliar : list)
+    const [tareasPendientes, setTareasPendientes] = useState(cargaAuxiliarPendientes ? cargaAuxiliarPendientes : cargaAuxiliar)
 
 
     const handleModificarElemento = (id) => {
@@ -26,13 +28,17 @@ function Taskslist(props){
         })
         setMiLista(listaModificada);
         localStorage.setItem("lista", JSON.stringify(listaModificada))
+
+        const listaModificadaTareasPendientes = listaModificada.filter(iteracion => iteracion.completed === false)
+        setTareasPendientes(listaModificadaTareasPendientes);
+        localStorage.setItem("listaPendientes", JSON.stringify(listaModificadaTareasPendientes))
     }
 
 
     return (
         <ul>
             {
-                miLista.map((task) => (
+                tareasPendientes.map((task) => (
                 <Task 
                 key = {task.id}
                 id={task.id}
