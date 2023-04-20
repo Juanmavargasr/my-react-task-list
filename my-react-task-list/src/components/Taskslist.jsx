@@ -29,17 +29,6 @@ function Taskslist(props){
     }
 
 
-
-    // useEffect(() => {
-
-    //     const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
-    //     if (cargaAuxiliar){
-    //         setMiLista(cargaAuxiliar)
-    //         console.log(cargaAuxiliar)
-    //     }
-    // },[])  
-
-
     return (
         <ul>
             {
