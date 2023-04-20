@@ -13,7 +13,6 @@ function Taskslist(props){
 
     const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
 
-
     const [miLista, setMiLista] = useState(cargaAuxiliar ? cargaAuxiliar : list)
 
 
@@ -32,16 +31,6 @@ function Taskslist(props){
         localStorage.setItem("lista", JSON.stringify(listaModificada))
     }
 
-
-
-    useEffect(() => {
-
-        const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
-        if (cargaAuxiliar){
-            setMiLista(cargaAuxiliar)
-            console.log(cargaAuxiliar)
-        }
-    },[])  
 
 
     return (
