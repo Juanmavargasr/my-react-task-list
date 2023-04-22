@@ -13,12 +13,12 @@ function Taskslist(props){
 
     const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
     const cargaAuxiliarPendientes = JSON.parse(window.localStorage.getItem("listaPendientes"))
-    // const cargaAuxiliarRealizadas = JSON.parse(window.localStorage.getItem("listaRealizadas"))
+    const cargaAuxiliarRealizadas = JSON.parse(window.localStorage.getItem("listaRealizadas"))
 
 
     const [miLista, setMiLista] = useState(cargaAuxiliar ? cargaAuxiliar : list)
     const [tareasPendientes, setTareasPendientes] = useState(cargaAuxiliarPendientes ? cargaAuxiliarPendientes : cargaAuxiliar)
-    // const [tareasRealizadas, setTareasRealizadas] = useState(cargaAuxiliarRealizadas ? cargaAuxiliarRealizadas : cargaAuxiliar)
+    const [tareasRealizadas, setTareasRealizadas] = useState(cargaAuxiliarRealizadas ? cargaAuxiliarRealizadas : cargaAuxiliar)
 
 
     const handleModificarElemento = (id) => {
@@ -36,30 +36,48 @@ function Taskslist(props){
         setTareasPendientes(listaModificadaTareasPendientes);
         localStorage.setItem("listaPendientes", JSON.stringify(listaModificadaTareasPendientes))
 
-        // const listaModificadaTareasRealizadas = lista.listaModificada.filter(iteracion => iteracion.completed === true)
-        // setTareasRealizadas(listaModificadaTareasRealizadas);
-        // localStorage.setItem("listaRealizadas", JSON.stringify(listaModificadaTareasRealizadas))
+        const listaModificadaTareasRealizadas = listaModificada.filter(iteracion => iteracion.completed === true)
+        setTareasRealizadas(listaModificadaTareasRealizadas);
+        localStorage.setItem("listaRealizadas", JSON.stringify(listaModificadaTareasRealizadas))
     }
 
 
     return (
         <ul>
-            {
-                tareasPendientes.map((task) => (
-                <Task 
-                key = {task.id}
-                id={task.id}
-                taskname ={task.taskname}
-                description = {task.description}
-                completed = {task.completed}
-                onModificarElemento = {handleModificarElemento}
-                />
-                ))
-            }
-
+            <li>
+                {
+                    tareasPendientes.map((task) => (
+                    <Task 
+                    key = {task.id}
+                    id={task.id}
+                    taskname ={task.taskname}
+                    description = {task.description}
+                    completed = {task.completed}
+                    onModificarElemento = {handleModificarElemento}
+                    />
+                    ))
+                }
+            </li>
+            <li>
+                {
+                    tareasRealizadas.map((task) => (
+                    <Task 
+                    key = {task.id}
+                    id={task.id}
+                    taskname ={task.taskname}
+                    description = {task.description}
+                    completed = {task.completed}
+                    onModificarElemento = {handleModificarElemento}
+                    />
+                    ))
+                }
+            </li>
         </ul>
 
+
     );
+
+
 }
 
 export default Taskslist;
