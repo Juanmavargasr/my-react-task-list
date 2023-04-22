@@ -8,10 +8,12 @@ function Taskslist(props){
         {id: 1, taskname: "Example task 1", description: "task's 1 description",completed: true},
         {id: 2, taskname: "Example task 2", description: "task's 2 description",completed: false},
         {id: 3, taskname: "Example task 3", description: "task's 1 description",completed: false}
-    ]
+    ]  
 
 
     const cargaAuxiliar = JSON.parse(window.localStorage.getItem("lista"));
+
+
     const cargaAuxiliarPendientes = JSON.parse(window.localStorage.getItem("listaPendientes"))
     const cargaAuxiliarRealizadas = JSON.parse(window.localStorage.getItem("listaRealizadas"))
 
@@ -44,7 +46,7 @@ function Taskslist(props){
 
     return (
         <ul>
-            <li>
+            <ul>
                 {
                     tareasPendientes.map((task) => (
                     <Task 
@@ -57,8 +59,8 @@ function Taskslist(props){
                     />
                     ))
                 }
-            </li>
-            <li>
+            </ul>
+            <ul>
                 {
                     tareasRealizadas.map((task) => (
                     <Task 
@@ -71,7 +73,7 @@ function Taskslist(props){
                     />
                     ))
                 }
-            </li>
+            </ul>
         </ul>
 
 
@@ -79,5 +81,7 @@ function Taskslist(props){
 
 
 }
+
+
 
 export default Taskslist;
