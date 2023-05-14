@@ -5,23 +5,20 @@
 import { useEffect } from "react";
 import Header from "./components/Header";
 import Taskslist from "./components/Taskslist";
+import context from "./components/Context";
 // import Donetask from "./components/Donetask";
 
-import './index.css';
-
-
+import "./index.css";
+import Context from "./components/Context";
 
 function App() {
-  
-
-
   return (
     <div className="App">
       <Header />
-      <Taskslist/>
+      <h3>Pending Task</h3>
+      <Context />
+      <h3>Done Task</h3>
       {/* <Donetask/> */}
-
-
     </div>
   );
 }
