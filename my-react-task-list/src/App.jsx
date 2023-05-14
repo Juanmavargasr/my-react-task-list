@@ -5,18 +5,19 @@
 import { useEffect } from "react";
 import Header from "./components/Header";
 import Taskslist from "./components/Taskslist";
-import context from "./components/Context";
+// import context from "./components/Context";
 // import Donetask from "./components/Donetask";
 
 import "./index.css";
 import Context from "./components/Context";
+import Task from "./components/Task";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <h3>Pending Task</h3>
-      <Context />
+      <Taskslist />
       <h3>Done Task</h3>
       {/* <Donetask/> */}
     </div>
