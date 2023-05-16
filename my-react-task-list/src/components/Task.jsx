@@ -5,8 +5,30 @@ function Task(props) {
     alert(`The task ${taskname} has been discarded.`);
   }
 
+  //   return (
+  //     <li>
+  //       <input
+  //         type="checkbox"
+  //         name={taskname}
+  //         onClick={() => {
+  //           onModificarElemento(id);
+  //         }}
+  //         onChange={() => {}}
+  //         checked={completed}
+  //       />
+  //       <label>
+  //         <h3>{taskname}</h3>
+  //       </label>
+  //       <label>
+  //         {" "}
+  //         <p>{description}</p>
+  //       </label>
+  //       <button onClick={handleClickDiscarded}>Discard task</button>
+  //     </li>
+  //   );
+
   return (
-    <li>
+    <li className="task">
       <input
         type="checkbox"
         name={taskname}
@@ -19,11 +41,12 @@ function Task(props) {
       <label>
         <h3>{taskname}</h3>
       </label>
-      <label>
-        {" "}
+      <label className="task-description">
         <p>{description}</p>
       </label>
-      <button onClick={handleClickDiscarded}>Discard task</button>
+      <button className="discard-button" onClick={handleClickDiscarded}>
+        Discard task
+      </button>
     </li>
   );
 }
