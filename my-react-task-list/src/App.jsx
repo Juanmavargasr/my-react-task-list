@@ -11,6 +11,11 @@ function App() {
     description: undefined,
   });
 
+  const createTask = {
+    name: name,
+    description: description,
+  };
+
   const handleNameChange = (event) => {
     const value = event.target.value;
     setFormValidation({
@@ -20,11 +25,12 @@ function App() {
           ? ""
           : "The taskname is to short, should have at least 3 character",
     });
-    setName();
+    setName(value);
   };
 
   const handleDescriptionChange = (event) => {
-    SetDescription();
+    const value = event.target.value;
+    SetDescription(value);
   };
 
   // const nameExist = (formValidation) => {
